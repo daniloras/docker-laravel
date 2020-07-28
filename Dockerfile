@@ -1,10 +1,10 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 # Install packages
-RUN apk --no-cache add php7.3 php7-fpm php7-mysqli php7-pdo php7-pdo_mysql php7-json php7-openssl \
-    php7-curl php7-zlib php7-xml php7-xmlwriter php7-phar php7-intl php7-dom php7-xmlreader \
-    php7-ctype php7-mbstring php7-gd php7-tokenizer php7-soap php7-bz2 php7-fileinfo \
-    php7-simplexml php7-session php7-iconv php7-zip nginx nodejs supervisor curl git mysql-client
+RUN apk --no-cache add php7.3 php7.3-fpm php7.3-mysqli php7.3-pdo php7.3-pdo_mysql php7.3-json php7.3-openssl \
+    php7.3-curl php7.3-zlib php7.3-xml php7.3-xmlwriter php7.3-phar php7.3-intl php7.3-dom php7.3-xmlreader \
+    php7.3-ctype php7.3-mbstring php7.3-gd php7.3-tokenizer php7.3-soap php7.3-bz2 php7.3-fileinfo \
+    php7.3-simplexml php7.3-session php7.3-iconv php7.3-zip nginx nodejs supervisor curl git mysql-client
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
