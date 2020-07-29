@@ -7,7 +7,7 @@ RUN apk --update add ca-certificates && \
 RUN apk --no-cache add php php-fpm php-mysqli php-pdo php-pdo_mysql php-json php-openssl \
     php-curl php-zlib php-xml php-xmlwriter php-phar php-intl php-dom php-xmlreader \
     php-ctype php-mbstring php-gd php-tokenizer php-soap php-bz2 php-fileinfo \
-    php-simplexml php-session php-iconv php-zip php-gmp php-dev libmcrypt-dev libsodium nginx nodejs supervisor curl git mysql-client
+    php-simplexml php-session php-iconv php-zip php-gmp libmcrypt-dev libsodium nginx nodejs supervisor curl git mysql-client
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
