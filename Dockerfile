@@ -1,17 +1,20 @@
-FROM alpine:3.8
+FROM alpine:3.11
+
+RUN apk --update add ca-certificates && \
+    echo "https://dl.bintray.com/php-alpine/v3.11/php-7.4" >> /etc/apk/repositories
 
 # Install packages
-RUN apk --no-cache add php7.2 php7.2-fpm php7.2-mysqli php7.2-pdo php7.2-pdo_mysql php7.2-json php7.2-openssl \
-    php7.2-curl php7.2-zlib php7.2-xml php7.2-xmlwriter php7.2-phar php7.2-intl php7.2-dom php7.2-xmlreader \
-    php7.2-ctype php7.2-mbstring php7.2-gd php7.2-tokenizer php7.2-soap php7.2-bz2 php7.2-fileinfo \
-    php7.2-simplexml php7.2-session php7.2-iconv php7.2-zip nginx nodejs supervisor curl git mysql-client
+RUN apk --no-cache add php php-fpm php-mysqli php-pdo php-pdo_mysql php-json php-openssl \
+    php-curl php-zlib php-xml php-xmlwriter php-phar php-intl php-dom php-xmlreader \
+    php-ctype php-mbstring php-gd php-tokenizer php-soap php-bz2 php-fileinfo \
+    php-simplexml php-session php-iconv php-zip nginx nodejs supervisor curl git mysql-client
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY config/fpm-pool.conf /etc/php7.2/php-fpm.d/zzz_custom.conf
-COPY config/php.ini /etc/php7.2/conf.d/zzz_custom.ini
+COPY config/fpm-pool.conf /etc/php/php-fpm.d/zzz_custom.conf
+COPY config/php.ini /etc/php/conf.d/zzz_custom.ini
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
